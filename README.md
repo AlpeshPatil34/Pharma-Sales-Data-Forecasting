@@ -59,6 +59,7 @@ Number of past observations tested in input sequences was either 10 or 5. For se
 
 ## Conclusion - 
 To conclude, time-series analyses and forecasts have guided potentially useful conclusions and recommendations to the pharmacy. Daily, weekly and annual seasonality analysis were proven useful for identifying the periods in which special sales and marketing campaigns could be implemented, except for N05B and N05C categories of drugs which did not exhibit significant regularities. Forecasts have proven better than Naïve methods and in acceptable intervals for long-term planning.
+![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/Tabular%20.png)
 
 ## Newer Applications - 
 Newer packages such as Greykite, Kats & many other SOTA developments can be applied for a better production model. The key improvements in sales forecasting are expected from reducing the uncertainty of the models by expanding to multivariate time series forecasting problem.
