@@ -1,11 +1,12 @@
-# Credit Card Fraud Detection
-Credit card fraud is the unauthorized use of a credit or debit card, or similar payment tool (ACH, EFT, recurring charge, etc.), to fraudulently obtain money or property. Credit and debit card numbers can be stolen from unsecured websites or can be obtained in an identity theft scheme. Credit card fraud can be authorised, where the genuine customer themselves processes a payment to another account which is controlled by a criminal, or unauthorised, where the account holder does not provide authorisation for the payment to proceed and the transaction is carried out by a third party.
+# Pharma Sales Data Forecasting
+The sales forecasting in pharmaceutical industry is typically done by using Naïve model, where the forecasted values equal values in the previous period with added factor of growth, which is specifically defined for different regions, markets, categories of products, etc. Although this model fails when the market saturates, in general and on a larger scale, it has proven as successful. Still, analysis and forecasts on a smaller scale, such as single distributor, pharmacy chain or even individual pharmacy, smaller periods such as weeks, etc., guide very important decisions related to resource and procurement planning, what-if analyses, return-on-investment forecasting, business planning and others.
+
+Thus, the main objective of this project is to tackle the exploration of the feasibility of the usage of modern time-series forecasting methods in pharmaceutical products sales forecasting on a smaller scale.
 
 #### -- Project Status: [Completed]
 
 ## Project Intro/Objective
-A predictive analysis of fraudulent activity in Credit Card transactions, this project uses multiple prediction models to compare the accuracies at which a particular transaction is considered to be fraudulent or not. This dataset presents transactions that occurred in two days, where we have 492 frauds out of 284,807 transactions. The dataset is highly skewed as the positive class(frauds), only account for 0.172% of all transactions.
-It contains only numerical input variables which are the result of a PCA transformation. ![alt text](https://github.com/AlpeshPatil34/Credit-Card-Fraud-Detection/blob/master/images/Desktop%20Screenshot%202021.12.31%20-%2012.38.29.68.png)
+The objective of the project is to validate different methods and approaches related to sales time series data preparation, analysis and forecasting. With aim to facilitate recommending sales and marketing strategies based on trend/seasonality effects and forecasting sales of eight different groups of pharmaceutical products with diverse characteristics, such as stationarity, seasonality, amount of residuals and sales data variance. Effectiveness of three forecasting methods, namely ARIMA, Facebook’s Prophet and Long-Short Term Memory (LSTM) neural networks is investigated. Each of the method is complemented with two optimization and validation approaches, relevant for short-term (so called rolling forecast scenario) and long-term forecasting.
 
 ### Methods Used
 * Inferential Statistics
