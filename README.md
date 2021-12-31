@@ -22,32 +22,37 @@ The objective of the project is to validate different methods and approaches rel
 
 
 ## Project Description
-The data was obtained from a competition held on Kaggle.com.
-The features V1, V2, ... V28 are the principal components obtained with PCA.
-The only features which have not been transformed with PCA are Time and Amount. Feature Time contains the seconds elapsed between each transaction and the first transaction in the dataset. The feature Amount is the transaction Amount, this feature can be used for example-dependant cost-senstive learning
-Feature "class" is the response variable and it takes value 1 in case of fraud and 0 otherwise.
+Initial dataset consisted of 600000 transactional data collected in 6 years (period 2014-2019), indicating date and time of sale, pharmaceutical drug brand name and sold quantity. As a result of the interviews with pharmacists, decision was made that the subject of analyses and forecasting will be actual drug categories, instead of the individual drugs. Thus, selected group of drugs (57 drugs) is classified to 8 Anatomical Therapeutic Chemical (ATC) Classification System categories:
 
-(Provide more detailed overview of the project.  Talk a bit about your data sources and what questions and hypothesis you are exploring. What specific data analysis/visualization and modelling work are you using to solve the problem? What blockers and challenges are you facing?  Feel free to number or bullet point things here)
-Post investigation of the data, relationships between different features were focused upon. ![alt text](https://github.com/AlpeshPatil34/Credit-Card-Fraud-Detection/blob/master/images/Correlation%20plot%20with%20Pearsons.jpg). 
+M01AB - Anti-inflammatory and antirheumatic products, non-steroids, Acetic acid derivatives and related substances
+M01AE - Anti-inflammatory and antirheumatic products, non-steroids, Propionic acid derivatives
+N02BA - Other analgesics and antipyretics, Salicylic acid and derivatives
+N02BE/B - Other analgesics and antipyretics, Pyrazolones and Anilides
+N05B - Psycholeptics drugs, Anxiolytic drugs
+N05C - Psycholeptics drugs, Hypnotics and sedatives drugs
+R03 - Drugs for obstructive airway diseases
+R06 - Antihistamines for systemic use
 
-The data was split in 3 parts, a train set, a validation set and a test set. For the first three models, we only used the train and test set.
+Stationarity of time-series is the property of exhibiting constant statistical properties over time (for example, mean, variance, autocorrelation). It can be visually determined by plotting rolling statistics (rolling means and variances). In stationary time series, the mean of the series, variance of the series and covariance of the i th term and the (i + m) th term should not be a function of time.
 
-Since no clear relationships were defined, singular one-on-one correlations were checked. Post that, 4 ensemble predictive models were employed to understand how well the predictions can be done, and on the basis of prerequiste parameters, AUC-ROC scores were calculated to quantifiy the comparisons of the same.
+We can use Augmented Dickey-Fuller (ADF) test to check stationarity of the data. Possible values of regression parameters of ADF are:
 
-![alt text](https://github.com/AlpeshPatil34/Credit-Card-Fraud-Detection/blob/master/images/ROC%20Analysis.jpg)
+c : constant only (default)
+ct : constant and trend
+ctt : constant, and linear and quadratic trend
+nc : no constant, no trend
+![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/ACF%20Plot.png)
+![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/PACF%20plot.png)
+## Forecasting with Prophet - 
+Prophet model is fited with data in two columns, where first one contains time information and is labeled as ds. Another stores actual time series data and is labeled as y.
+![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/Prophet.png)
 
-We started with RandomForrestClassifier, for which we obtained an AUC scode of 0.85 when predicting the target for the test set.
+## Forecasting with LSTM - 
+Long-term forecasting validation has been done with three LSTM configurations: Vanilla LSTM, Stacked LSTM and Bi-directional LSTM. Relu activation function was used, optimizer was Adam and loss function was Mean Squared Error. The best results were achieved with training the model in 400 epochs. Before fitting, all data was standardized (rescaled in interval -1,1) and transformed to data for supervised problem.
 
-We followed with an AdaBoostClassifier model, with lower AUC score (0.83) for prediction of the test set target values.
+Number of past observations tested in input sequences was either 10 or 5. For series with larger variances and randomness (N05B and N05C) and simpler, Vanilla LSTM model, 10 past observations produced better forecasting accuracy. In all other cases, 5 past observations were used. This is the parameter that has been adopted.
+![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/Stacked%20LSTM.png)
 
-We then followed with an CatBoostClassifier, with the AUC score after training 500 iterations 0.86.
-
-We then experimented with a XGBoost model. In this case, se used the validation set for validation of the training model. The best validation score obtained was 0.984. Then we used the model with the best training step, to predict target value from the test data; the AUC score obtained was 0.974.
-
-![alt text](https://github.com/AlpeshPatil34/Credit-Card-Fraud-Detection/blob/master/images/lightgbm%20ROC.jpg)
-
-We then presented the data to a LightGBM model. We used both train-validation split and cross-validation to evaluate the model effectiveness to predict 'Class' value, i.e. detecting if a transaction was fraudulent. With the first method we obtained values of AUC for the validation set around 0.974. For the test set, the score obtained was 0.946.
-With the cross-validation, we obtained an AUC score for the test prediction of 0.93.
 
 ## Newer Applications - 
-Considering the data was skewered, undersampling techniques should be employed to produce further tangible results which could hold up during live data phase.
+Newer packages such as Greykite, Kats & many other SOTA developments can be applied for a better production model.
