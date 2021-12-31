@@ -10,6 +10,8 @@ The objective of the project is to validate different methods and approaches rel
 
 ### Methods Used
 * Inferential Statistics
+* Time series Analysis
+* Deep Learning - LSTMs
 * Ensemble Learning
 * Data Visualization
 * Predictive Modeling
@@ -18,7 +20,7 @@ The objective of the project is to validate different methods and approaches rel
 * Python
 * Plotly, Seaborn, Matlplotlib
 * Pandas, jupyter
-* Catboost, AdaBoost, xgboost, Lightgbm, Random Forest
+* ARIMA, Prophet, LSTM
 
 
 ## Project Description
@@ -35,6 +37,7 @@ R06 - Antihistamines for systemic use
 
 Stationarity of time-series is the property of exhibiting constant statistical properties over time (for example, mean, variance, autocorrelation). It can be visually determined by plotting rolling statistics (rolling means and variances). In stationary time series, the mean of the series, variance of the series and covariance of the i th term and the (i + m) th term should not be a function of time.
 
+![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/PACF%20plot.png)
 We can use Augmented Dickey-Fuller (ADF) test to check stationarity of the data. Possible values of regression parameters of ADF are:
 
 c : constant only (default)
@@ -42,7 +45,7 @@ ct : constant and trend
 ctt : constant, and linear and quadratic trend
 nc : no constant, no trend
 ![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/ACF%20Plot.png)
-![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/PACF%20plot.png)
+
 ## Forecasting with Prophet - 
 Prophet model is fited with data in two columns, where first one contains time information and is labeled as ds. Another stores actual time series data and is labeled as y.
 ![alt text](https://github.com/AlpeshPatil34/Pharma-Sales-Data-Forecasting/blob/master/images/Prophet.png)
